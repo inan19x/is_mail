@@ -4,8 +4,8 @@ from email.message import EmailMessage
 from aiosmtpd.controller import Controller
 from aiosmtpd.handlers import AsyncMessage
 
-MAILBOX_DIR = '/opt/mail/mailboxes'
-USERS_FILE = '/opt/mail/users.txt'
+MAILBOX_DIR = '/opt/is_mail/mailboxes'
+USERS_FILE = '/opt/is_mail/users.txt'
 PORT = 25
 
 def user_exists(username):
