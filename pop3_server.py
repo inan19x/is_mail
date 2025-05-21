@@ -2,8 +2,8 @@ import socket
 import threading
 import os
 
-MAILBOX_DIR = '/opt/mail/mailboxes'
-USERS_FILE = '/opt/mail/users.txt'
+MAILBOX_DIR = '/opt/is_mail/mailboxes'
+USERS_FILE = '/opt/is_mail/users.txt'
 PORT = 110
 
 def authenticate(username, password):
