@@ -1,4 +1,4 @@
-Installation:
+Installation:<br>
 All these scripts assumes you git clone this file under /opt directory, so there will be new directory called /opt/is_mail/<br>
 <br>
 File descriptions:<br>
@@ -10,4 +10,4 @@ File descriptions:<br>
 -mailboxes/* - email storage for the users<br>
 -webmail/* - host these files in your web server directory e.g /var/www/html and start to use webmail through your browser<br>
 <br>
-Of course you can also use telnet or netcat to interact with the server to demonstrate the basic usage of SMTP and POP3
+You can also use telnet or netcat to interact with the server to demonstrate the basic usage of SMTP and POP3
