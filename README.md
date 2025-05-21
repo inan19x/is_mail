@@ -1,5 +1,5 @@
 Installation:<br>
-All these scripts assumes you git clone this file under /opt directory, so there will be new directory called /opt/is_mail/<br>
+All these scripts assumes you git clone under /opt directory, so there will be new directory called /opt/is_mail/<br>
 <br>
 File descriptions:<br>
 -systemd/mypop3.service - service file for systemd, to support run the pop3 service using systemctl<br>
