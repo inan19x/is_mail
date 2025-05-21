@@ -1,6 +1,6 @@
 <?php
 // index.php
-define('USERS_FILE', '/opt/mail/users.txt');  // Path to users.txt file
+define('USERS_FILE', '/opt/is_mail/users.txt');  // Path to users.txt file
 
 // Function to authenticate against the users.txt file
 function authenticate($username, $password) {
