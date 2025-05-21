@@ -3,8 +3,8 @@ Description=My SMTPd
 After=network-online.target
 
 [Service]
-ExecStart=/usr/bin/python3 /opt/mail/smtp_server.py 
-ExecStop=/bin/pkill -9 -f /opt/mail/smtp_server.py
+ExecStart=/usr/bin/python3 /opt/is_mail/smtp_server.py 
+ExecStop=/bin/pkill -9 -f /opt/is_mail/smtp_server.py
 User=root
 Group=root
 
