@@ -23,7 +23,7 @@ class CustomSMTPHandler(AsyncMessage):
         print(f"Sending email \"{subject}\" from: {mailfrom} to: {rcpttos}")
 
         for rcpt in rcpttos:
-            username = rcpt.split('@')[0]
+            username = rcpt.split()[0]
             if not user_exists(username):
                 print(f"User {username} not found, discarding email.")
                 continue
