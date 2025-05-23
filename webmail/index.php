@@ -40,8 +40,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo "<p>Connection error: $errstr ($errno)</p>";
 	} else {
 
-	    echo "<h2>Welcome, $username</h2>&nbsp;[<a href=\".\">Exit</a>]";
-	    echo "<hr>";
+	    echo "<div align=\"center\" style=\"background-color:#80b0ff; font-size:25px;\">Welcome, $username</h2>&nbsp;[<a href=\".\">Exit</a>]</div>";
+
+	    echo "<div style=\"background-color:#e0e0e0;\">";
 
             // Read server greeting
             echo "<pre>" . htmlspecialchars(pop3_get_line($fp)) . "</pre>";
@@ -54,6 +55,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             fputs($fp, "PASS $password\r\n");
             $response = pop3_get_line($fp);
             echo "<pre>" . htmlspecialchars($response) . "</pre>";
+
+	    echo "</div>";
+	    echo "<hr>";
 
             if (strpos($response, '+OK') === 0) {
                 // Authenticated: send LIST
@@ -100,14 +104,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	    fclose($fp);
 	    echo "<hr>";
 
-	    include "compose.html";
+	    include "compose.php";
+
+	    echo "<div align=\"center\" style=\"background-color:#80b0ff; font-size:25px;\">mySimple&trade; webmail</div>";
 
         }
     } else {
-        echo "<p>Invalid credentials. Please <a href=\".\">go back</a> and try again.</p>";
+	echo "<div align=\"center\" style=\"background-color:#ff8a8a; font-size:20px;\">Invalid credentials. Please <a href=\".\">go back</a> and try again.</p></div>";
+
     }
 }
 if(empty($username)){
-	include "login.html";
+	include "login.php";
 }
 ?>

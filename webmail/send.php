@@ -57,9 +57,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $body = $_POST['body'];
 
     if (sendSMTPMail($from, $to, $subject, $body)) {
-        echo "Email sent successfully! [<a href=\".\">Exit</a>]";
+	echo "<div align=\"center\" style=\"background-color:#00ff00; font-size:20px;\">Email sent successfully! [<a href=\".\">Exit</a>]</div>";
     } else {
-        echo "Failed to send email. [<a href=\".\">Exit</a>]";
+	echo "<div align=\"center\" style=\"background-color:#ff0000; font-size:20px;\">Failed to send email. [<a href=\".\">Exit</a>]</div>";
     }
 }
 ?>
