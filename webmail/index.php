@@ -90,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         echo "<hr>";
                         echo "<b>Message #{$msg['id']}:</b><br>";
 			$message=nl2br($message);
-                        echo "<p style=\"padding:5px;background-color:#f0f0f0;font-family:'Courier New';font-size:12px;\" >" . $message . "</font>";
+                        echo "<p style=\"padding:5px;background-color:#f0f0f0;font-family:'Courier New';font-size:12px;\" >" . $message . "</p>";
                     }
                 } else {
                     echo "<h3>Read email - No emails in your inbox.</h3>";
