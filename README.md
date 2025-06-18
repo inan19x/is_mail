@@ -31,7 +31,7 @@ Regards,<br>
 Bob<br>
 .**<br>
 _250 OK_<br>
-QUIT<br>
+**QUIT**<br>
 _221 Bye_<br>
 <br>
 ___
