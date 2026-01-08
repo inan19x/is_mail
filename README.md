@@ -1,17 +1,30 @@
 Installation:<br>
+___
 All these scripts assumes you git clone under /opt directory, so there will be new directory called /opt/is_mail/<br>
 <br>
 File descriptions:<br>
 -systemd/mypop3.service - service file for systemd, to support run the pop3 service using systemctl<br>
 -systemd/mysmtp.service - service file for systemd, to support run the smtp service using systemctl<br>
--pop3_server.py - the actual pop3 server, require python3<br>
--smtp_server.py - the actual smtp server, require python3<br>
+-pop3_server.py - the actual pop3 server, require python2.7<br>
+-smtp_server.py - the actual smtp server, require python2.7<br>
 -users.txt - list of users and its default password (yes, you can change it)<br>
 -mailboxes/* - email storage for the users<br>
 -webmail/* - host these files in your web server directory e.g /var/www/html and start to use webmail through your browser<br>
 <br>
 You can also use telnet or netcat to interact with the server to demonstrate the basic usage of SMTP and POP3<br>
 <br>
+___
+Optional for LDAP support:<br>
+Python2.7 is deprecated. If you want to run this old python code pop3_server_ldap.py or smtp_server_ldap.py anyway for LDAP support, it needs ldap3 from pip.<br>
+First install pip for python2.7 if you don't have it<br>
+curl "https://bootstrap.pypa.io/pip/2.7/get-pip.py" -o "get-pip.py"<br>
+<br>
+And run<br>
+python get-pip.py<br>
+<br>
+Lastly, install the ldap3 for your python2.7 system<br>
+/usr/bin/python -m pip install ldap3<br>
+
 ___
 Example interaction with SMTP:<br><br>
 _220 mail.acme.lab. Python SMTP 1.4.6_<br>
