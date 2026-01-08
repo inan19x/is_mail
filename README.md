@@ -10,6 +10,8 @@ File descriptions:<br>
 -users.txt - list of users and its default password (yes, you can change it)<br>
 -mailboxes/* - email storage for the users<br>
 -webmail/* - host these files in your web server directory e.g /var/www/html and start to use webmail through your browser<br>
+-webmail/index-localauth.php - rename this to 'index.php' to use local authentication by using users.txt data<br>
+-webmail/index-ldapauth.php - rename this to 'index.php' to use your LDAP server for authentication<br>
 <br>
 You can also use telnet or netcat to interact with the server to demonstrate the basic usage of SMTP and POP3<br>
 <br>
