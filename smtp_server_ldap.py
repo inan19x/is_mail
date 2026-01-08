@@ -1,19 +1,40 @@
 import socket
 import threading
 import os
+from ldap3 import Server, Connection, ALL, SUBTREE
 
 MAILBOX_DIR = '/opt/is_mail/mailboxes'
-USERS_FILE = '/opt/is_mail/users.txt'
 PORT = 25
 
+# LDAP configuration
+LDAP_SERVER = 'win2016.acme.lab'
+LDAP_PORT = 389
+BASE_DN = 'dc=acme,dc=lab'
+
+
 def user_exists(username):
-    if not os.path.exists(USERS_FILE):
+    """
+    Check if a user exists in LDAP by searching for UserPrincipalName=username.
+    Returns True if found, False otherwise.
+    """
+    try:
+        server = Server(LDAP_SERVER, port=LDAP_PORT, get_info=ALL)
+        # Non-anonymous bind with service account, example: "MySvc Account" (password: Secret1234)
+        conn = Connection(server, user='CN=MySvc Account,CN=Users,DC=acme,DC=lab', password='Secret1234', auto_bind=True)
+        # Search for user with the exact UserPrincipalName
+        conn.search(
+            search_base=BASE_DN,
+            search_filter='(userPrincipalName={})'.format(username),
+            search_scope=SUBTREE,
+            attributes=['userPrincipalName']
+        )
+        found = len(conn.entries) > 0
+        conn.unbind()
+        return found
+    except Exception as e:
+        print("LDAP search error for {}: {}".format(username, str(e)))
         return False
-    with open(USERS_FILE, 'r') as f:
-        for line in f:
-            if line.strip().split(':')[0] == username:
-                return True
-    return False
+
 
 def handle_client(conn, addr):
     conn.send("+OK SMTP server - centos7.acme.lab\r\n")
@@ -131,6 +152,7 @@ def handle_client(conn, addr):
 
     conn.close()
 
+
 def start_server():
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.bind(('0.0.0.0', PORT))
@@ -140,6 +162,7 @@ def start_server():
     while True:
         conn, addr = server.accept()
         threading.Thread(target=handle_client, args=(conn, addr)).start()
+
 
 if __name__ == '__main__':
     start_server()
